@@ -24,14 +24,22 @@ public class ProductCategoriesRest {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<ProductCategories>> all() {
-        return new ResponseEntity<List<ProductCategories>>(productCategoriesService.findAll(), HttpStatus.OK);
+        List<ProductCategories> productCategoriesList = productCategoriesService.findAll();
+
+        if (productCategoriesList.isEmpty()){
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }else
+            return new ResponseEntity<>(productCategoriesList, HttpStatus.OK);
     }
 
-
     @RequestMapping(value = "/gender/{gender}", method = RequestMethod.GET)
-    public ResponseEntity<List<Productcategories>> getCategoriesByGender(@PathVariable String gender) {
-        System.out.println("+++++++++++++++ all +++++++++++");
-        return new ResponseEntity<List<Productcategories>>(categoryService.getCategoriesByGender(gender), HttpStatus.OK);
+    public ResponseEntity<List<ProductCategories>> getCategoriesByGender(@PathVariable String gender) {
+        List<ProductCategories> productCategoriesList = productCategoriesService.getCategoriesByGender(gender);
+
+        if (productCategoriesList.isEmpty()){
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }else
+            return new ResponseEntity<>(productCategoriesList, HttpStatus.OK);
     }
 
 

@@ -10,4 +10,6 @@ import java.util.List;
 public interface ProductCategoriesService extends InterfaceService<ProductCategories, Integer> {
 
     List<ProductCategories> findAll();
+
+    List<ProductCategories> getCategoriesByGender(String gender);
 }

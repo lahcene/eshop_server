@@ -1,6 +1,6 @@
 package com.tiramisu.eshop.service;
 
-import com.tiramisu.eshop.dao.CategoryRepository;
+import com.tiramisu.eshop.dao.ProductCategoriesRepository;
 import com.tiramisu.eshop.domain.ProductCategories;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,9 +14,9 @@ import java.util.List;
 public class ProductCategoriesServiceImlp extends AbstractService<ProductCategories, Integer> implements ProductCategoriesService {
 
     @Autowired
-    CategoryRepository categoryRepository;
+    ProductCategoriesRepository categoryRepository;
 
-    public ProductCategoriesServiceImlp(CategoryRepository repository) {
+    public ProductCategoriesServiceImlp(ProductCategoriesRepository repository) {
         super(repository);
     }
 
@@ -58,5 +58,10 @@ public class ProductCategoriesServiceImlp extends AbstractService<ProductCategor
     @Override
     public List<ProductCategories> findAll() {
         return categoryRepository.findAll();
+    }
+
+    @Override
+    public List<ProductCategories> getCategoriesByGender(String gender) {
+        return null;
     }
 }
